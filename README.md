@@ -11,10 +11,10 @@
   mvn spring-boot:run
 
 # List of Endpoints
- - Get All Employees
-    GET http://localhost:8080/api/employees
- - Get Single Employee
-    GET http://localhost:8080/api/employees/{employeeId}
+ - Get All Employees  
+    GET http://localhost:8080/api/employees  
+ - Get Single Employee  
+    GET http://localhost:8080/api/employees/{employeeId}  
  - Create An Employee
     URL: POST http://localhost:8080/api/employees
     Payload:
