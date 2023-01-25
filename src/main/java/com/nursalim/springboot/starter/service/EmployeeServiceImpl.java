@@ -66,4 +66,12 @@ public class EmployeeServiceImpl implements EmployeeService{
         });
         employeeRepository.delete(employee.get());
     }
+
+    @Override
+    public List<EmployeeDto> searchEmployee(String query) {
+        List<Employee> employees = employeeRepository.searchEmployee(query);
+        List<EmployeeDto> employeesDto = employees.stream().map(employee -> modelMapper.map(employee, EmployeeDto.class)).collect(Collectors.toList());
+
+        return employeesDto;
+    }
 }

@@ -4,6 +4,7 @@ import com.nursalim.springboot.starter.dto.EmployeeDto;
 import com.nursalim.springboot.starter.entity.Employee;
 import com.nursalim.springboot.starter.service.EmployeeService;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,6 +14,7 @@ import java.util.List;
 @RestController
 @AllArgsConstructor
 @RequestMapping("api/employees")
+@Slf4j
 public class EmployeeController {
     private EmployeeService employeeService;
 
@@ -44,6 +46,14 @@ public class EmployeeController {
     public ResponseEntity<String> deleteEmployeeById(@PathVariable("id") Long employeeId){
         employeeService.deleteEmployee(employeeId);
         return new ResponseEntity<>("Employee with id " + employeeId + " successfully deleted", HttpStatus.OK);
+    }
+
+    @GetMapping("/search")
+    public ResponseEntity<List<EmployeeDto>> searchEmployee(@RequestParam("query") String query){
+        log.info("query : {} ", query);
+        List<EmployeeDto> employeeDtos = employeeService.searchEmployee(query);
+        return new ResponseEntity<>(employeeDtos, HttpStatus.OK);
+
     }
 
 
