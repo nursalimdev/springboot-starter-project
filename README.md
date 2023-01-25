@@ -15,13 +15,13 @@
     GET http://localhost:8080/api/employees  
  - Get Single Employee  
     GET http://localhost:8080/api/employees/{employeeId}  
- - Create An Employee
-    URL: POST http://localhost:8080/api/employees
-    Payload:
-      {
-        "firstName":"test",
-        "lastName":"delete",
-        "email":"test.delete@gmail.com"
-      }
- - Delete Employee
+ - Create An Employee  
+    URL: POST http://localhost:8080/api/employees  
+    Payload:  
+      {  
+        "firstName":"test",  
+        "lastName":"delete",  
+        "email":"test.delete@gmail.com"  
+      }  
+ - Delete Employee  
 
