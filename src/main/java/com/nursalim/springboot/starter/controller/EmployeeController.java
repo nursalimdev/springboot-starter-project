@@ -1,5 +1,6 @@
 package com.nursalim.springboot.starter.controller;
 
+import com.nursalim.springboot.starter.dto.EmployeeDto;
 import com.nursalim.springboot.starter.entity.Employee;
 import com.nursalim.springboot.starter.service.EmployeeService;
 import lombok.AllArgsConstructor;
@@ -16,26 +17,26 @@ public class EmployeeController {
     private EmployeeService employeeService;
 
     @PostMapping
-    public ResponseEntity<Employee> createEmployee(@RequestBody Employee employee){
-        Employee savedEmployee = employeeService.createEmployee(employee);
+    public ResponseEntity<EmployeeDto> createEmployee(@RequestBody EmployeeDto employeeDto){
+        EmployeeDto savedEmployee = employeeService.createEmployee(employeeDto);
         return new ResponseEntity<>(savedEmployee, HttpStatus.CREATED);
     }
 
     @GetMapping("{id}")
-    public ResponseEntity<Employee> getEmployeeById(@PathVariable("id") Long employeeId){
-        Employee employee = employeeService.getEmployeeById(employeeId).orElseThrow(()-> new IllegalArgumentException("Employee not found"));
+    public ResponseEntity<EmployeeDto> getEmployeeById(@PathVariable("id") Long employeeId){
+        EmployeeDto employee = employeeService.getEmployeeById(employeeId);
         return new ResponseEntity<>(employee, HttpStatus.OK);
     }
 
     @GetMapping
-    public ResponseEntity<List<Employee>> getAllEmployees(){
-        List<Employee> employees = employeeService.getAllEmployee();
+    public ResponseEntity<List<EmployeeDto>> getAllEmployees(){
+        List<EmployeeDto> employees = employeeService.getAllEmployee();
         return new ResponseEntity<>(employees, HttpStatus.OK);
     }
 
     @PutMapping("{id}")
-    public ResponseEntity<Employee> updateEmployee(@PathVariable("id") Long employeeId, @RequestBody Employee employee){
-        Employee updatedEmployee = employeeService.updateEmployee(employeeId, employee);
+    public ResponseEntity<EmployeeDto> updateEmployee(@PathVariable("id") Long employeeId, @RequestBody EmployeeDto employeeDto){
+        EmployeeDto updatedEmployee = employeeService.updateEmployee(employeeId, employeeDto);
         return new ResponseEntity<>(updatedEmployee, HttpStatus.OK);
     }
 
